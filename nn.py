@@ -12,11 +12,19 @@ class NN:
     def sigmoid(self, x):
         return 1/(1 + np.exp(-x))
     
+    def tanh(self, x):
+        return np.tanh(x)
+    
+    
     def d_sigmoid(self, x):
         return x * (1 - x)
     
     def d_relu(self, x):
         return 1 if x > 0 else 0
+    
+    def d_tanh(self, x):
+        return 1 - x**2
+    
     
     def get_input(self, x):
         self.x = x
@@ -47,6 +55,8 @@ class NN:
                 res = self.relu(res)
             elif self.architecture[i][2] == "sigmoid":
                 res = self.sigmoid(res)
+            elif self.architecture[i][2] == "tanh":
+                res = self.tanh(res)
         return res 
 
 
