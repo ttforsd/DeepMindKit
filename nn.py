@@ -32,7 +32,7 @@ class NN:
     def get_output(self, y):
         self.y = y
 
-    # datastructure: [[input_size, output_size, activation], [output_size, output_size, activation], ...]
+    # datastructure: [[input_size, output_size, activation], [input_size, output_size, activation], ...]
     def get_nn_architecture(self, architecture):
         self.architecture = architecture
         self.init_params()
