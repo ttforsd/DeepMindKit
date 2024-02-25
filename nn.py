@@ -3,7 +3,7 @@ import numpy as np
 class NN:
     def __init__(self):
         # Initialise hash tables for parameters(weights and biases) and gradients(for backpropagation)
-        self.grads = {"w": [], "b": []}
+        self.grads = {"w": [], "b": [], "z": [], "a": []}
         self.params = {"w": [], "b": []}
 
     def relu(self, x):
@@ -119,6 +119,7 @@ class NN:
                 for i in range(len(self.params["w"])):
                     self.params["w"][i] -= lr * self.grads["w"][i] / batch_m
                     self.params["b"][i] -= lr * self.grads["b"][i] / batch_m
+            print(epoch, self.loss_func(self.forw_prop(self.x), self.y))
 
     def predict(self):
         return self.forw_prop(self.x)
@@ -134,9 +135,7 @@ test.get_input(x)
 # test forw_prop
 test.get_output(np.random.randn(1, 10))
 test.get_nn_architecture([[2, 3, "relu"], [3, 1, "sigmoid"]])
-print(test.forw_prop())
-
-print(test.cost(test.forw_prop(), func="cross_entropy"))
+print(test.predict())
 
 
                          
